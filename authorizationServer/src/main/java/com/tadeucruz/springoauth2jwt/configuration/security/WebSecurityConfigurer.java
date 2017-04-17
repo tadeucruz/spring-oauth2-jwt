@@ -1,5 +1,6 @@
 package com.tadeucruz.springoauth2jwt.configuration.security;
 
+import com.tadeucruz.springoauth2jwt.configuration.security.userdetails.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

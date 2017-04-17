@@ -1,6 +1,5 @@
-package com.tadeucruz.springoauth2jwt.configuration.security.services;
+package com.tadeucruz.springoauth2jwt.configuration.security.userdetails;
 
-import com.tadeucruz.springoauth2jwt.configuration.security.CustomUserDetails;
 import com.tadeucruz.springoauth2jwt.model.User;
 import com.tadeucruz.springoauth2jwt.repository.UserRepository;
 import com.tadeucruz.springoauth2jwt.repository.UserRolesRepository;
@@ -24,7 +23,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User user = userRepository.findByUserName(userName);
         if (null == user) {
-            throw new UsernameNotFoundException("No user present with username: " + userName);
+            throw new UsernameNotFoundException("Bad credentials");
         }
 
         List<String> userRoles = userRolesRepository.findRoleByUserName(userName);

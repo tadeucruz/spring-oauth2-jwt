@@ -1,6 +1,6 @@
 package com.tadeucruz.springoauth2jwt.configuration.security.oauth2;
 
-import com.tadeucruz.springoauth2jwt.configuration.security.CustomUserDetails;
+import com.tadeucruz.springoauth2jwt.configuration.security.userdetails.CustomUserDetails;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;

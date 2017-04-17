@@ -1,4 +1,4 @@
-package com.tadeucruz.springoauth2jwt.configuration.security;
+package com.tadeucruz.springoauth2jwt.configuration.security.userdetails;
 
 import com.tadeucruz.springoauth2jwt.model.User;
 import org.springframework.security.core.GrantedAuthority;
