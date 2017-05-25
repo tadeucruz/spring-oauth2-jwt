@@ -19,12 +19,22 @@ public class EndPoint {
     private ResourceServerTokenServices tokenServices;
 
     @PreAuthorize("hasRole('ROLE_USER')")
-    @RequestMapping(value = "/endpoint/", method = RequestMethod.GET)
-    public ResponseEntity<String> listAllPersons(OAuth2Authentication authentication) {
+    @RequestMapping(value = "/endpointuser", method = RequestMethod.GET)
+    public ResponseEntity<String> endPointUser(OAuth2Authentication authentication) {
         OAuth2AuthenticationDetails oAuth2AuthenticationDetails = (OAuth2AuthenticationDetails) authentication.getDetails();
         Map<String, Object> additionalInfo = tokenServices.readAccessToken(oAuth2AuthenticationDetails.getTokenValue()).getAdditionalInformation();
         return new ResponseEntity<String>("Your UUID: " + additionalInfo.get("uuid").toString()
-                + " and your username: " + authentication.getPrincipal(),
+                + " , your username: " + authentication.getPrincipal() + " and your role USER",
+                HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value = "/endpointadmin", method = RequestMethod.GET)
+    public ResponseEntity<String> endPointAdmin(OAuth2Authentication authentication) {
+        OAuth2AuthenticationDetails oAuth2AuthenticationDetails = (OAuth2AuthenticationDetails) authentication.getDetails();
+        Map<String, Object> additionalInfo = tokenServices.readAccessToken(oAuth2AuthenticationDetails.getTokenValue()).getAdditionalInformation();
+        return new ResponseEntity<String>("Your UUID: " + additionalInfo.get("uuid").toString()
+                + " , your username: " + authentication.getPrincipal() + " and your role ADMIN",
                 HttpStatus.OK);
     }
 }
