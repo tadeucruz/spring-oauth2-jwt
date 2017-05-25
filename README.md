@@ -2,8 +2,10 @@
 
 This project is an exemple of Spring + Spring Security + OAuth2 using JWT Token focous in microservice. 
 
-*authorizationServer* is responsable to manager user, auth and manager the Token. The project will run on 8080 
-*resourceServer* is responsible to response for API endpoint, and the only will do this if the user is auth and is ADMIN. The project will run on 8081
+### *authorizationServer* 
+Is responsable to manager user, auth and manager the Token. The project will run on 8080 
+### *resourceServer* 
+Is responsible to response for API endpoint, and the only will do this if the user is auth and is ADMIN. The project will run on 8081
 
 ## TODO:
 * Use RSA Key for JWT
