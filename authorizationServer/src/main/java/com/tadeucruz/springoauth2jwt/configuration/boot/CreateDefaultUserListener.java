@@ -23,20 +23,32 @@ public class CreateDefaultUserListener implements ApplicationListener<ContextRef
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        logger.info("Creating Default User");
-
+        //Creating User
+        logger.info("Creating user with role USER");
         User user = new User();
-        user.setEmail("tadeucruz@gmai.com");
+        user.setEmail("test@test.com");
         user.setEnabled(1);
-        user.setUserName("tadeucruz");
+        user.setUserName("user");
         user.setPassword("1q2w3e");
-
         userRepository.save(user);
 
         UserRole role = new UserRole();
         role.setRole("ROLE_USER");
         role.setUserId(user.getId());
+        userRolesRepository.save(role);
 
+        //Creating Admin
+        logger.info("Creating user with role ADMIN");
+        user = new User();
+        user.setEmail("test@test.com");
+        user.setEnabled(1);
+        user.setUserName("admin");
+        user.setPassword("1q2w3e");
+        userRepository.save(user);
+
+        role = new UserRole();
+        role.setRole("ROLE_ADMIN");
+        role.setUserId(user.getId());
         userRolesRepository.save(role);
     }
 }
