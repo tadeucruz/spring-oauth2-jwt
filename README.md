@@ -18,7 +18,6 @@ curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoi
 
 ## TODO:
 * Use RSA Key for JWT
-* Create user from when start the authorizationServer
 
 # References 
 
