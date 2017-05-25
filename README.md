@@ -9,6 +9,7 @@ Is responsible to response for API endpoint, and the only will do this if the us
 
 ## TODO:
 * Use RSA Key for JWT
+* Create user from when start the authorizationServer
 
 # References 
 
