@@ -17,3 +17,4 @@ Is responsible to response for API endpoint, and the only will do this if the us
 * http://www.baeldung.com/spring-security-oauth-jwt
 * http://www.programming-free.com/2016/01/spring-security-spring-data-jpa.html
 * https://github.com/nisabek/spring-security-JWT/
+* https://springframework.guru/running-code-on-spring-boot-startup/
