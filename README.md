@@ -4,7 +4,7 @@ This project is an exemple of Spring + Spring Security + OAuth2 using JWT Token 
 
 ### *authorizationServer* 
 Is responsable to manager user, auth and manager the Token.The project will run on 8080 
-Every time the aplication start creates twousers
+Every time the aplication start creates two users:
 
 * **user** witch password **1q2w3e** and role USER
 * **admin** witch password **1q2w3e** and rolse ADMIN
