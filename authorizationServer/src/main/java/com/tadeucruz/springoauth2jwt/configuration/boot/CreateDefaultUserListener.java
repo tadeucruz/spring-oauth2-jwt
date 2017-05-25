@@ -1,24 +1,30 @@
-package com.tadeucruz.springoauth2jwt.rest;
+package com.tadeucruz.springoauth2jwt.configuration.boot;
 
 import com.tadeucruz.springoauth2jwt.model.User;
 import com.tadeucruz.springoauth2jwt.model.UserRole;
 import com.tadeucruz.springoauth2jwt.repository.UserRepository;
 import com.tadeucruz.springoauth2jwt.repository.UserRolesRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.stereotype.Component;
 
-@RestController
-public class UserRest {
+@Component
+public class CreateDefaultUserListener implements ApplicationListener<ContextRefreshedEvent> {
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private UserRolesRepository userRolesRepository;
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public void postCreateUser() {
+    @Override
+    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
+        logger.info("Creating Default User");
+
         User user = new User();
         user.setEmail("tadeucruz@gmai.com");
         user.setEnabled(1);
@@ -28,7 +34,7 @@ public class UserRest {
         userRepository.save(user);
 
         UserRole role = new UserRole();
-        role.setRole("ROLE_ADMIN");
+        role.setRole("ROLE_USER");
         role.setUserId(user.getId());
 
         userRolesRepository.save(role);
